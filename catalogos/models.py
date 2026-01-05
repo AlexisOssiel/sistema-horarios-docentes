@@ -47,3 +47,17 @@ class Aula(models.Model):
 
     def __str__(self):
         return self.clave
+
+class MateriaGrupo(models.Model):
+    clave = models.CharField(max_length=30)  # ej. "MAT-4A"
+    nombre_materia = models.CharField(max_length=120)  # ej. "Matemáticas"
+    grado = models.PositiveSmallIntegerField()  # 1-6 (o el rango que uses)
+    grupo = models.CharField(max_length=5)  # "A", "B", etc.
+    activo = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ("grado", "grupo", "nombre_materia")
+        ordering = ["grado", "grupo", "nombre_materia"]
+
+    def __str__(self):
+        return f"{self.nombre_materia} - {self.grado}{self.grupo}"

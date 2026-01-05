@@ -22,3 +22,11 @@ class AulaAdmin(admin.ModelAdmin):
     list_display = ("clave", "edificio", "capacidad", "activo")
     list_filter = ("activo",)
     search_fields = ("clave", "edificio")
+
+from .models import MateriaGrupo
+
+@admin.register(MateriaGrupo)
+class MateriaGrupoAdmin(admin.ModelAdmin):
+    list_display = ("nombre_materia", "grado", "grupo", "clave", "activo")
+    list_filter = ("grado", "grupo", "activo")
+    search_fields = ("nombre_materia", "clave")
