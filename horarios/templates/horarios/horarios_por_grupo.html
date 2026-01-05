@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Horarios por Grupo</title>
+</head>
+<body>
+    <h1>Horarios del Grupo</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Docente</th>
+                <th>Aula</th>
+                <th>Hora</th>
+                <th>Día</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for horario in horarios %}
+                <tr>
+                    <td>{{ horario.docente.nombre }} {{ horario.docente.apellido_paterno }}</td>
+                    <td>{{ horario.aula.clave }}</td>
+                    <td>{{ horario.hora_inicio }} - {{ horario.hora_fin }}</td>
+                    <td>{{ horario.get_dia_semana_display }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
